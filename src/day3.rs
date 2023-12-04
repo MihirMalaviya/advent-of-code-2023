@@ -1,7 +1,7 @@
 // PLAN
-// TODO find next symbol in loop (every non period/digit)
+// find next symbol in loop (every non period/digit)
 
-// TODO look at every pos around the symbol, and if its a digit, look next to the digit on both sides until exhausted
+// look at every pos around the symbol, and if its a digit, look next to the digit on both sides until exhausted
 //      make sure that u dont repeat digits somehow
 //          maybe just do and then check where the digit was and if same place ignore
 
@@ -10,25 +10,23 @@
 //              returns digit starting index
 //              returns digit as an int
 
-// TODO then just add them up
+// then just add them up
 
 #[aoc_generator(day3)]
-pub fn input_generator(input: &str) -> Vec<Vec<char>> {
-    input.lines().map(|x| x.trim().chars().collect()).collect()
+pub fn input_generator(input: &str) -> Vec<Vec<u8>> {
+    input.lines().map(|x| x.trim().bytes().collect()).collect()
 }
 
-pub fn is_symbol(c: char) -> bool {
-    c != '.' && !c.is_ascii_digit()
+pub fn is_symbol(byte: u8) -> bool {
+    byte != b'.' && !byte.is_ascii_digit()
 }
 
-pub fn get_num_index(line: &Vec<char>, index: (usize, usize)) -> (usize, usize) {
+pub fn get_num_index(line: &Vec<u8>, index: (usize, usize)) -> (usize, usize) {
     let mut x: i32 = index.0 as i32;
     while line[x as usize].is_ascii_digit() {
-        // dbg!(index);
         if x != 0 {
             x -= 1;
         } else {
-            // dbg!(x);
             if x == 0 {
                 return (0, index.1);
             }
@@ -37,11 +35,10 @@ pub fn get_num_index(line: &Vec<char>, index: (usize, usize)) -> (usize, usize) 
     (x as usize + 1, index.1)
 }
 
-pub fn get_full_num(line: &Vec<char>, index: usize) -> usize {
+pub fn get_full_num(line: &Vec<u8>, index: usize) -> usize {
     let mut index = index;
-    let mut digits: Vec<char> = vec![];
+    let mut digits: Vec<u8> = vec![];
     while line[index].is_ascii_digit() {
-        // dbg!(line[index]);
         digits.push(line[index]);
         if index != line.len() - 1 {
             index += 1;
@@ -49,15 +46,14 @@ pub fn get_full_num(line: &Vec<char>, index: usize) -> usize {
             break;
         }
     }
-    digits
-        .iter()
-        .collect::<String>()
+    String::from_utf8(digits)
+        .expect("digit string wasn't parsable")
         .parse::<usize>()
-        .expect("digit string wasnt parsable")
+        .expect("digit string wasn't parsable")
 }
 
 #[aoc(day3, part1)]
-pub fn part1(input: &[Vec<char>]) -> usize {
+pub fn part1(input: &[Vec<u8>]) -> usize {
     let mut sum = 0;
     let mut exhausted_indexes: Vec<(usize, usize)> = vec![];
 
@@ -91,11 +87,6 @@ pub fn part1(input: &[Vec<char>]) -> usize {
                         if exhausted_indexes.contains(&num_index) {
                             continue;
                         } else {
-                            // println!(
-                            //     "[{}]\t{}",
-                            //     c,
-                            //     get_full_num(&input[num_index.1], num_index.0)
-                            // );
                             sum += get_full_num(&input[num_index.1], num_index.0);
                             exhausted_indexes.push(num_index);
                         }
@@ -108,13 +99,13 @@ pub fn part1(input: &[Vec<char>]) -> usize {
 }
 
 #[aoc(day3, part2)]
-pub fn part2(input: &[Vec<char>]) -> usize {
+pub fn part2(input: &[Vec<u8>]) -> usize {
     let mut sum = 0;
     let mut exhausted_indexes: Vec<(usize, usize)> = vec![];
 
     for (y, line) in input.iter().enumerate() {
         for (x, c) in line.iter().enumerate() {
-            if *c != '*' {
+            if *c != b'*' {
                 continue;
             }
             let mut nums: Vec<usize> = vec![];
