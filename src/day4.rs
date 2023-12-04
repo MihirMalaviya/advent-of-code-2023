@@ -16,7 +16,16 @@ pub fn input_generator(input: &str) -> Vec<i32> {
 
 #[aoc(day4, part1)]
 pub fn part1(cards: &[i32]) -> i32 {
-    cards.iter().map(|x| 2i32.pow(*x as u32 - 1)).sum()
+    cards
+        .iter()
+        .map(|x| {
+            if *x != 0 {
+                2_i32.pow((*x - 1) as u32)
+            } else {
+                0
+            }
+        })
+        .sum()
 }
 
 #[aoc(day4, part2)]
