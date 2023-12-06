@@ -179,7 +179,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn sample1() {
+    fn example1() {
         assert_eq!(
             8,
             part1(
@@ -193,7 +193,7 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"
     }
 
     #[test]
-    fn sample2() {
+    fn example2() {
         assert_eq!(
             2286,
             part2(

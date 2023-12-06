@@ -1,3 +1,5 @@
+/input
+
 /target
 **/*.rs.bk
 .idea

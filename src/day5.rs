@@ -255,7 +255,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn sample1() {
+    fn example1() {
         assert_eq!(
             35,
             part1(&input_generator(
@@ -298,7 +298,7 @@ humidity-to-location map:
     }
 
     #[test]
-    fn sample2() {
+    fn example2() {
         assert_eq!(
             46,
             part2(&input_generator(

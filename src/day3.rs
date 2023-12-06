@@ -1,16 +1,18 @@
-// PLAN
-// find next symbol in loop (every non period/digit)
+/*
+PLAN
+find next symbol in loop (every non period/digit)
 
-// look at every pos around the symbol, and if its a digit, look next to the digit on both sides until exhausted
-//      make sure that u dont repeat digits somehow
-//          maybe just do and then check where the digit was and if same place ignore
+look at every pos around the symbol, and if its a digit, look next to the digit on both sides until exhausted
+     make sure that u dont repeat digits somehow
+         maybe just do and then check where the digit was and if same place ignore
 
-//      so i will need:
-//          a get full digit from coordinate function
-//              returns digit starting index
-//              returns digit as an int
+     so i will need:
+         a get full digit from coordinate function
+             returns digit starting index
+             returns digit as an int
 
-// then just add them up
+then just add them up
+*/
 
 #[aoc_generator(day3)]
 pub fn input_generator(input: &str) -> Vec<Vec<u8>> {
@@ -153,7 +155,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn sample1() {
+    fn example1() {
         assert_eq!(
             4361,
             part1(&input_generator(
@@ -172,7 +174,7 @@ mod tests {
     }
 
     #[test]
-    fn sample2() {
+    fn example2() {
         assert_eq!(
             467835,
             part2(&input_generator(

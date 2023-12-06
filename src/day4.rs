@@ -46,7 +46,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn sample1() {
+    fn example1() {
         assert_eq!(
             13,
             part1(&input_generator(
@@ -59,8 +59,9 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"
             ))
         );
     }
+
     #[test]
-    fn sample2() {
+    fn example2() {
         assert_eq!(
             30,
             part2(&input_generator(

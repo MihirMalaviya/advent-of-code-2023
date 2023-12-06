@@ -1,25 +1,5 @@
-// #[aoc_generator(day6)]
-// pub fn input_generator(input: &str) -> (Vec<usize>, Vec<usize>) {
-//     let mut input = input.trim().lines().map(|x| {
-//         x.split_once(':')
-//             .unwrap()
-//             .1
-//             .split_whitespace()
-//             .map(|n| n.parse::<usize>().unwrap())
-//             .collect()
-//     });
-
-//     (input.next().unwrap(), input.next().unwrap())
-// }
-
-/*
-
-*/
-
 #[aoc(day6, part1)]
 pub fn part1(input: &str) -> u32 {
-    // dbg!(input);
-
     let mut input = input.trim().lines().map(|x| {
         x.split_once(':')
             .unwrap()
@@ -35,7 +15,7 @@ pub fn part1(input: &str) -> u32 {
     for (time, distance) in times.iter().zip(distances) {
         let mut possibilities = 0;
         for presstime in 1..*time {
-            if (presstime as i32 * (*time as i32 - presstime as i32) as i32) > distance as i32 {
+            if (presstime * (*time - presstime)) > distance {
                 possibilities += 1
             }
         }
@@ -46,11 +26,7 @@ pub fn part1(input: &str) -> u32 {
 
 #[aoc(day6, part2)]
 pub fn part2(input: &str) -> i64 {
-    // dbg!(input);
-
     let input = input.replace(' ', "");
-
-    dbg!(&input);
 
     let mut input = input
         .trim()
@@ -85,7 +61,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn sample1() {
+    fn example1() {
         assert_eq!(
             288,
             part1(
@@ -95,8 +71,9 @@ Distance:  9  40  200
             )
         );
     }
+
     #[test]
-    fn sample2() {
+    fn example2() {
         assert_eq!(
             71503,
             part2(

@@ -64,7 +64,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn sample1() {
+    fn example1() {
         assert_eq!(
             142,
             part1(
@@ -75,8 +75,9 @@ mod tests {
             )
         );
     }
+
     #[test]
-    fn sample2() {
+    fn example2() {
         assert_eq!(
             281 + 21,
             part2(
