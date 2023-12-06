@@ -195,6 +195,7 @@ pub fn part1(input: &(Vec<usize>, Vec<Vec<Map>>)) -> usize {
                 if changed {
                     unit = x;
                     // println!("{}", unit);
+                    break;
                 }
             }
         }
@@ -241,8 +242,8 @@ pub fn part2(input: &(Vec<usize>, Vec<Vec<Map>>)) -> usize {
             }
         }
         if in_seed_range(unit, seeds) {
-            dbg!(unit);
-            dbg!(location);
+            // dbg!(unit);
+            // dbg!(location);
             return location;
         }
         location += 1;
