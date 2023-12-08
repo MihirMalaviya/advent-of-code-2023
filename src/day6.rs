@@ -1,3 +1,5 @@
+// TODO optimize with math
+
 #[aoc(day6, part1)]
 pub fn part1(input: &str) -> u32 {
     let mut input = input.trim().lines().map(|x| {
