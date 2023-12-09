@@ -102,18 +102,16 @@ pub fn part1(input: &str) -> usize {
             Vec::from_iter(vec.clone().into_iter().rev())
         })
         .flatten()
-        // .rev()
         .collect();
 
-    println!("{:#?}", types);
-    println!("{:#?}", games);
+    // println!("{:#?}", types);
+    // println!("{:#?}", games);
 
     let mut total = 0;
     for i in 0..games.len() {
-        println!("{:#?} * {:#?}\t{:#?}", games[i].bid, (i + 1), games[i]);
+        // println!("{:#?} * {:#?}\t{:#?}", games[i].bid, (i + 1), games[i]);
         total += games[i].bid * (i + 1);
     }
-    // games.sort_by(|a, b| rank(a.clone()).cmp(&rank(b.clone())));
     total
 }
 
@@ -138,6 +136,7 @@ pub fn part2(input: &str) -> usize {
         })
         .collect::<Vec<Game>>();
 
+    // TODO implement this better
     let mut types: Vec<Vec<Game>> = vec![vec![], vec![], vec![], vec![], vec![], vec![], vec![]];
 
     for game in games.iter() {
@@ -153,18 +152,16 @@ pub fn part2(input: &str) -> usize {
             Vec::from_iter(vec.clone().into_iter().rev())
         })
         .flatten()
-        // .rev()
         .collect();
 
-    println!("{:#?}", types);
-    println!("{:#?}", games);
+    // println!("{:#?}", types);
+    // println!("{:#?}", games);
 
     let mut total = 0;
     for i in 0..games.len() {
-        println!("{:#?} * {:#?}\t{:#?}", games[i].bid, (i + 1), games[i]);
+        // println!("{:#?} * {:#?}\t{:#?}", games[i].bid, (i + 1), games[i]);
         total += games[i].bid * (i + 1);
     }
-    // games.sort_by(|a, b| rank(a.clone()).cmp(&rank(b.clone())));
     total
 }
 
