@@ -1,11 +1,11 @@
-pub struct Game {
+struct Game {
     red: u32,
     green: u32,
     blue: u32,
 }
 
 #[aoc(day2, part1)]
-pub fn part1(input: &str) -> u32 {
+fn part1(input: &str) -> u32 {
     let mut total = 0;
     for (i, game) in input
         .lines()
@@ -51,7 +51,7 @@ pub fn part1(input: &str) -> u32 {
 }
 
 #[aoc(day2, part1, optimized)]
-pub fn part1_optimized(input: &str) -> u32 {
+fn part1_optimized(input: &str) -> u32 {
     let mut total = 0;
     for (i, game) in input
         .lines()
@@ -96,7 +96,7 @@ pub fn part1_optimized(input: &str) -> u32 {
 }
 
 #[aoc(day2, part2)]
-pub fn part2(input: &str) -> u32 {
+fn part2(input: &str) -> u32 {
     let mut total = 0;
     for game in input.lines().map(|l| {
         let mut game: Game = Game {
@@ -136,7 +136,7 @@ pub fn part2(input: &str) -> u32 {
 }
 
 #[aoc(day2, part2, optimized)]
-pub fn part2_optimized(input: &str) -> u32 {
+fn part2_optimized(input: &str) -> u32 {
     let mut total = 0;
     for game in input.lines().map(|l| {
         let mut game: Game = Game {

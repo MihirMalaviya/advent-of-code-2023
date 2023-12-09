@@ -1,6 +1,6 @@
 // was alot worse but then I optimised it a bit w/ help from sm from discord
 #[aoc_generator(day4)]
-pub fn input_generator(input: &str) -> Vec<i32> {
+fn parse(input: &str) -> Vec<i32> {
     let mut winning_nums = vec![0; input.lines().count()];
     for (i, line) in input.lines().enumerate() {
         let (want, get) = line.split_once(':').unwrap().1.split_once('|').unwrap();
@@ -15,7 +15,7 @@ pub fn input_generator(input: &str) -> Vec<i32> {
 }
 
 #[aoc(day4, part1)]
-pub fn part1(cards: &[i32]) -> i32 {
+fn part1(cards: &[i32]) -> i32 {
     cards
         .iter()
         .map(|x| {
@@ -29,7 +29,7 @@ pub fn part1(cards: &[i32]) -> i32 {
 }
 
 #[aoc(day4, part2)]
-pub fn part2(cards: &[i32]) -> usize {
+fn part2(cards: &[i32]) -> usize {
     let mut card_copies: Vec<usize> = vec![1; cards.len()];
 
     for (i, winnings) in cards.iter().enumerate() {
@@ -49,7 +49,7 @@ mod tests {
     fn example1() {
         assert_eq!(
             13,
-            part1(&input_generator(
+            part1(&parse(
                 "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
 Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19
 Card 3:  1 21 53 59 44 | 69 82 63 72 16 21 14  1
@@ -64,7 +64,7 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"
     fn example2() {
         assert_eq!(
             30,
-            part2(&input_generator(
+            part2(&parse(
                 "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
     Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19
     Card 3:  1 21 53 59 44 | 69 82 63 72 16 21 14  1

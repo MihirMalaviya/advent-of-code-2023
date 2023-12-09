@@ -1,5 +1,5 @@
 #[aoc(day1, part1)]
-pub fn part1(input: &str) -> u32 {
+fn part1(input: &str) -> u32 {
     input
         .lines()
         .map(|line| {
@@ -16,7 +16,7 @@ pub fn part1(input: &str) -> u32 {
         .sum()
 }
 
-pub fn get_line_nums_with_words(input: &str) -> Vec<u32> {
+fn get_line_nums_with_words(input: &str) -> Vec<u32> {
     let words = [
         "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
     ];
@@ -44,7 +44,7 @@ pub fn get_line_nums_with_words(input: &str) -> Vec<u32> {
 }
 
 #[aoc(day1, part2)]
-pub fn part2(input: &str) -> u32 {
+fn part2(input: &str) -> u32 {
     input
         .lines()
         .map(|line| {

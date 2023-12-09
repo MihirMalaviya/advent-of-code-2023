@@ -106,13 +106,13 @@ this one wasnt too bad
 use std::cmp::min;
 
 #[derive(Clone, Copy, Debug)]
-pub struct Map {
+struct Map {
     source_start: usize,
     destination_start: usize,
     range_len: usize,
 }
 
-pub fn translate_with_map(seed: usize, m: Map) -> (usize, bool) {
+fn translate_with_map(seed: usize, m: Map) -> (usize, bool) {
     if !(m.source_start <= seed && seed < m.source_start + m.range_len) {
         return (seed, false);
     }
@@ -120,7 +120,7 @@ pub fn translate_with_map(seed: usize, m: Map) -> (usize, bool) {
     (seed - m.source_start + m.destination_start, true)
 }
 
-pub fn translate_with_map_backwards(seed: usize, m: Map) -> (usize, bool) {
+fn translate_with_map_backwards(seed: usize, m: Map) -> (usize, bool) {
     if !(m.destination_start <= seed && seed < m.destination_start + m.range_len) {
         return (seed, false);
     }
@@ -129,7 +129,7 @@ pub fn translate_with_map_backwards(seed: usize, m: Map) -> (usize, bool) {
 }
 
 #[aoc_generator(day5)]
-pub fn input_generator(input: &str) -> (Vec<usize>, Vec<Vec<Map>>) {
+fn parse(input: &str) -> (Vec<usize>, Vec<Vec<Map>>) {
     let mut lines = input.lines();
     (
         lines
@@ -174,7 +174,7 @@ pub fn input_generator(input: &str) -> (Vec<usize>, Vec<Vec<Map>>) {
 }
 
 #[aoc(day5, part1)]
-pub fn part1(input: &(Vec<usize>, Vec<Vec<Map>>)) -> usize {
+fn part1(input: &(Vec<usize>, Vec<Vec<Map>>)) -> usize {
     // println!("{:#?}", input);
     let (seeds, all_maps) = input;
 
@@ -205,7 +205,7 @@ pub fn part1(input: &(Vec<usize>, Vec<Vec<Map>>)) -> usize {
     min_dist
 }
 
-pub fn in_seed_range(num: usize, nums: &Vec<usize>) -> bool {
+fn in_seed_range(num: usize, nums: &Vec<usize>) -> bool {
     for i in (0..nums.len()).step_by(2) {
         // dbg!(nums[i]);
         // dbg!(nums[i + 1]);
@@ -219,7 +219,7 @@ pub fn in_seed_range(num: usize, nums: &Vec<usize>) -> bool {
 }
 
 #[aoc(day5, part2)]
-pub fn part2(input: &(Vec<usize>, Vec<Vec<Map>>)) -> usize {
+fn part2(input: &(Vec<usize>, Vec<Vec<Map>>)) -> usize {
     let (seeds, all_maps) = input;
 
     let mut location = 0;
@@ -258,7 +258,7 @@ mod tests {
     fn example1() {
         assert_eq!(
             35,
-            part1(&input_generator(
+            part1(&parse(
                 "seeds: 79 14 55 13
 
 seed-to-soil map:
@@ -301,7 +301,7 @@ humidity-to-location map:
     fn example2() {
         assert_eq!(
             46,
-            part2(&input_generator(
+            part2(&parse(
                 "seeds: 79 14 55 13
 
 seed-to-soil map:

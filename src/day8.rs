@@ -1,9 +1,9 @@
 use std::collections::HashMap;
 
-pub struct Node(String, String);
+struct Node(String, String);
 
 // #[aoc_generator(day8)]
-// pub fn input_generator(input: &str) -> (Vec<usize>, HashMap<String, Node>) {
+// fn parse(input: &str) -> (Vec<usize>, HashMap<String, Node>) {
 //     let mut lines = input.lines();
 //     let order = lines
 //         .next()
@@ -24,7 +24,7 @@ pub struct Node(String, String);
 // }
 
 #[aoc(day8, part1)]
-pub fn part1(input: &str) -> usize {
+fn part1(input: &str) -> usize {
     let mut lines = input.lines();
     let order: Vec<usize> = lines
         .next()
@@ -57,14 +57,14 @@ pub fn part1(input: &str) -> usize {
     steps
 }
 
-pub fn gcd(a: usize, b: usize) -> usize {
+fn gcd(a: usize, b: usize) -> usize {
     if b == 0 {
         return a;
     }
     gcd(b, a % b)
 }
 
-pub fn lcm(nums: Vec<usize>) -> usize {
+fn lcm(nums: Vec<usize>) -> usize {
     if nums.len() == 1 {
         return nums[0];
     }
@@ -76,7 +76,7 @@ pub fn lcm(nums: Vec<usize>) -> usize {
 }
 
 #[aoc(day8, part2)]
-pub fn part2(input: &str) -> usize {
+fn part2(input: &str) -> usize {
     let mut lines = input.lines();
     let order: Vec<usize> = lines
         .next()
@@ -213,7 +213,7 @@ XXX = (XXX, XXX)"
 /*
 use std::collections::HashMap;
 
-pub struct Node(String, String);
+struct Node(String, String);
 
 // #[aoc_generator(day8)]
 // pub fn input_generator(input: &str) -> (Vec<usize>, HashMap<String, Node>) {
@@ -399,12 +399,12 @@ XXX = (XXX, XXX)"
 /*
 use std::collections::HashMap;
 
-pub struct HumanNodeChoices(String, String);
-pub struct Choice {
+struct HumanNodeChoices(String, String);
+struct Choice {
     path: usize,
     content: String,
 }
-pub struct GhostNodeChoices<'a> {
+struct GhostNodeChoices<'a> {
     l: &'a Choice,
     r: &'a Choice,
 }

@@ -1,7 +1,7 @@
 // TODO optimize with math
 
 #[aoc(day6, part1)]
-pub fn part1(input: &str) -> u32 {
+fn part1(input: &str) -> u32 {
     let mut input = input.trim().lines().map(|x| {
         x.split_once(':')
             .unwrap()
@@ -27,7 +27,7 @@ pub fn part1(input: &str) -> u32 {
 }
 
 #[aoc(day6, part2)]
-pub fn part2(input: &str) -> i64 {
+fn part2(input: &str) -> i64 {
     let input = input.replace(' ', "");
 
     let mut input = input

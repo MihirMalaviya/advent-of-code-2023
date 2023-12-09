@@ -1,20 +1,20 @@
 use std::collections::HashMap;
 
 #[derive(Clone, Debug)]
-pub struct Game {
+struct Game {
     cards: String,
     bid: usize,
 }
 
 impl Game {
-    pub fn get_repeating_list(&self) -> Vec<i32> {
+    fn get_repeating_list(&self) -> Vec<i32> {
         let mut counts: HashMap<u8, i32> = HashMap::new();
         self.cards
             .bytes()
             .for_each(|x| *counts.entry(x).or_insert(0) += 1);
         counts.values().cloned().collect()
     }
-    pub fn get_repeating_list_with_wildcards(&self) -> Vec<i32> {
+    fn get_repeating_list_with_wildcards(&self) -> Vec<i32> {
         let mut counts: HashMap<u8, i32> = HashMap::new();
         self.cards
             .bytes()
@@ -41,7 +41,7 @@ impl Game {
     }
 }
 
-pub fn rank(repeats: Vec<i32>) -> usize {
+fn rank(repeats: Vec<i32>) -> usize {
     // five of a kind
     if repeats.contains(&5) {
         return 7;
@@ -70,7 +70,7 @@ pub fn rank(repeats: Vec<i32>) -> usize {
 }
 
 #[aoc(day7, part1)]
-pub fn part1(input: &str) -> usize {
+fn part1(input: &str) -> usize {
     let games = input
         .lines()
         .map(|x| {
@@ -116,7 +116,7 @@ pub fn part1(input: &str) -> usize {
 }
 
 #[aoc(day7, part2)]
-pub fn part2(input: &str) -> usize {
+fn part2(input: &str) -> usize {
     let games = input
         .lines()
         .map(|x| {

@@ -15,7 +15,7 @@ then just add them up
 */
 
 #[aoc_generator(day3)]
-pub fn input_generator(input: &str) -> Vec<Vec<u8>> {
+pub fn parse(input: &str) -> Vec<Vec<u8>> {
     input.lines().map(|x| x.trim().bytes().collect()).collect()
 }
 
@@ -158,7 +158,7 @@ mod tests {
     fn example1() {
         assert_eq!(
             4361,
-            part1(&input_generator(
+            part1(&parse(
                 "467..114..
 ...*......
 ..35..633.
@@ -177,7 +177,7 @@ mod tests {
     fn example2() {
         assert_eq!(
             467835,
-            part2(&input_generator(
+            part2(&parse(
                 "467..114..
 ...*......
 ..35..633.
