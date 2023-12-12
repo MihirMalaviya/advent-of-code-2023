@@ -276,6 +276,7 @@ fn shoelace(points: Vec<(f32, f32)>) -> i32 {
     (area.abs() / 2.0) as i32
 }
 
+// TODO part 2 is unfinished; i manually counted them with paint.net
 #[aoc(day10, part2)]
 fn part2(input: &(Vec<Vec<char>>, (i32, i32))) -> i32 {
     let (tiles, starting_position) = input;
